@@ -2,7 +2,7 @@ import './List.css'
 import { Item } from './Item'
 import type { ItemData } from './Item'
 
-export interface ListProps {
+export type ListProps = {
   title: string
   items: ItemData[]
 }

@@ -1,6 +1,7 @@
 import './App.css'
 import { List } from './components/List'
 import type { ItemData } from './components/Item'
+import { Form } from './components/Form'
 
 const tasks: ItemData[] = [
   {
@@ -29,6 +30,7 @@ function App() {
   return (
     <>
       <h1>Úkolníček</h1>
+      <Form/>
       <List title="Úkoly" items={tasks} />
     </>
   )

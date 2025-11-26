@@ -1,6 +1,6 @@
 import './Item.css'
 
-export interface ItemProps {
+export type ItemProps = {
   title: string;
   description: string;
   done: boolean;
