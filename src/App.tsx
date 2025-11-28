@@ -1,9 +1,11 @@
 import './App.css'
 import { List } from './components/List'
 import type { ItemData } from './components/Item'
+import type { FormData } from './components/Form'
 import { Form } from './components/Form'
+import { useState } from 'react'
 
-const tasks: ItemData[] = [
+const tasksData: ItemData[] = [
   {
     title: 'Příprava prezentace',
     description: 'Vytvořit prezentaci pro páteční meeting s klientem.',
@@ -27,10 +29,26 @@ const tasks: ItemData[] = [
 ]
 
 function App() {
+
+  const [tasks, setTasks] = useState<ItemData[]>(tasksData)
+
+  const handleFormSubmit = (newTask: FormData) => {
+    setTasks([
+      {
+        ...newTask,
+        done: false
+      },
+      ...tasks,
+    ]
+    )
+  }
+
+
+
   return (
     <>
       <h1>Úkolníček</h1>
-      <Form/>
+      <Form onFormSubmit={handleFormSubmit}/>
       <List title="Úkoly" items={tasks} />
     </>
   )
