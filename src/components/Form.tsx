@@ -23,7 +23,7 @@ export function Form({ onFormSubmit}: FormProps) {
         description: '',
     })
 
-    const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         console.log('odesláno',formData)
@@ -31,7 +31,7 @@ export function Form({ onFormSubmit}: FormProps) {
     }
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> ) => {
-        console.log('odesláno')
+        // console.log('odesláno')
         
         setFormData({
             ...formData,
@@ -45,12 +45,27 @@ export function Form({ onFormSubmit}: FormProps) {
     return (
         <>
         <h2>formulář</h2>
-        <form onSubmit={() => {onFormSubmit(title, description)}}>
+        <form onSubmit={handleSubmit}>
             <div className="form">
-                <label htmlFor="">Zadej název úkolu</label>
-                <input onChange={handleChange} value={formData.title} type="text" name="title" />
-                <label htmlFor="">Zadej popis úkolu</label>
-                <textarea onChange={handleChange} value={formData.description} name="description" />
+                <label htmlFor="title">Zadej název úkolu</label>
+                <input
+                    type="text" 
+                    id='title'
+                    name="title" 
+                    className='form_field' 
+                    value={formData.title} 
+                    onChange={handleChange} 
+                />
+                <label htmlFor="description">Zadej popis úkolu</label>
+                <textarea 
+                    id='description'
+                    name="description" 
+                    rows={3}
+                    className='form_field' 
+                    value={formData.description} 
+                    onChange={handleChange} 
+                />
+
                 <button type="submit">Přidat</button>
             </div>
         </form>
